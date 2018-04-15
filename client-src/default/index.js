@@ -194,7 +194,7 @@ const socketUrl = url.format({
   protocol,
   auth: urlParts.auth,
   hostname,
-  port: urlParts.port,
+  port: protocol == 'https:' ? 443 : protocol == 'http:' ? 80 : 80,
   pathname: urlParts.path == null || urlParts.path === '/' ? '/sockjs-node' : urlParts.path
 });
 
